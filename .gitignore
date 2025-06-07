@@ -1,0 +1,8 @@
+# exclude .git configuration info
+ *.git
+
+# exclude .gitignore configuration
+ *.gitignore
+
+# Ignore Visual Studio Code specific settings
+.vscode/*
