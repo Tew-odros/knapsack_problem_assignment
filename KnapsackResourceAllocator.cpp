@@ -32,6 +32,48 @@ int getValidInt(const string& prompt, int minVal = 0) {
     }
 }
 
+// 0/1 Knapsack (DP)
+int knapsack01(const vector<Item>& items, int capacity, vector<int>& selectedItems) {
+    int n = items.size();
+    vector<vector<int>> dp(n + 1, vector<int>(capacity + 1, 0));
+
+    for (int i = 1; i <= n; ++i) {
+        for (int w = 0; w <= capacity; ++w) {
+            if (items[i - 1].weight <= w)
+                dp[i][w] = max(
+                    dp[i - 1][w],
+                    dp[i - 1][w - items[i - 1].weight] + items[i - 1].value
+                );
+            else
+                dp[i][w] = dp[i - 1][w];
+        }
+    }
+
+    // Trace selected items
+    int w = capacity;
+    for (int i = n; i > 0 && dp[i][w] > 0; --i) {
+        if (dp[i][w] != dp[i - 1][w]) {
+            selectedItems.push_back(items[i - 1].index);
+            w -= items[i - 1].weight;
+        }
+    }
+
+    return dp[n][capacity];
+}
+
+void solve01(const vector<Item>& items, int capacity) {
+    vector<int> selectedItems;
+    int maxValue = knapsack01(items, capacity, selectedItems);
+    cout << "\n 0/1 Knapsack Result:\n";
+    cout << "Total value: " << maxValue << "\n";
+    cout << "Selected items (Index | Value | Weight):\n";
+    for (int idx : selectedItems) {
+        cout << setw(6) << idx
+             << setw(8) << items[idx].value
+             << setw(8) << items[idx].weight << "\n";
+    }
+}
+
 int main () {
 
     return 0;
