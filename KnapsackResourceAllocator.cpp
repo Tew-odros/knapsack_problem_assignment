@@ -113,6 +113,71 @@ void solveFractional(const vector<Item>& items, int capacity) {
 }
 
 int main () {
+    cout << "=====  Knapsack Resource Allocation Tool =====\n";
+    int n = getValidInt("Enter number of items: ", 1);
+
+    vector<Item> items(n);
+    for (int i = 0; i < n; ++i) {
+        items[i].index = i;
+        items[i].value = getValidInt("Item " + to_string(i + 1) + " - Value: ", 0);
+        items[i].weight = getValidInt("Item " + to_string(i + 1) + " - Weight: ", 1);
+    }
+
+    int capacity = getValidInt("Enter maximum capacity of knapsack: ", 1);
+
+    int methodChoice;
+    bool solved01 = false, solvedFractional = false;
+
+    while (true) {
+        cout << "\nChoose solving method:\n";
+        cout << "1. 0/1 Knapsack\n";
+        cout << "2. Fractional Knapsack\n";
+        methodChoice = getValidInt("Enter choice (1 or 2): ");
+
+        if (methodChoice == 1) {
+            solve01(items, capacity);
+            solved01 = true;
+        } else if (methodChoice == 2) {
+            solveFractional(items, capacity);
+            solvedFractional = true;
+        } else {
+            cout << "Invalid method. Please choose 1 or 2.\n";
+            continue;
+        }
+
+
+        while (true) {
+            cout << "\nDo you want to solve the problem with the ";
+            if (methodChoice == 1 && !solvedFractional)
+                cout << "Fractional Knapsack method?\n";
+            else if (methodChoice == 2 && !solved01)
+                cout << "0/1 Knapsack method?\n";
+            else {
+                cout << "other method again? (Already solved both)\n";
+                break;
+            }
+
+            cout << "1. Yes\n2. No (Exit)\n";
+            int nextChoice = getValidInt("Enter choice (1 or 2): ");
+            if (nextChoice == 1) {
+                if (methodChoice == 1 && !solvedFractional) {
+                    solveFractional(items, capacity);
+                    solvedFractional = true;
+                } else if (methodChoice == 2 && !solved01) {
+                    solve01(items, capacity);
+                    solved01 = true;
+                }
+                break;
+            } else if (nextChoice == 2) {
+                cout << "Exiting program. Thank you!\n";
+                return 0;
+            } else {
+                cout << "Invalid input. Try again.\n";
+            }
+        }
+
+        break;
+    }
 
     return 0;
 }
