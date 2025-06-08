@@ -61,6 +61,28 @@ int knapsack01(const vector<Item>& items, int capacity, vector<int>& selectedIte
     return dp[n][capacity];
 }
 
+// Fractional Knapsack (Greedy)
+double knapsackFractional(vector<Item> items, int capacity, vector<FractionalItem>& selectedItems) {
+    sort(items.begin(), items.end(), [](const Item& a, const Item& b) {
+        return (double)a.value / a.weight > (double)b.value / b.weight;
+    });
+
+    double totalValue = 0.0;
+    for (const auto& item : items) {
+        if (capacity >= item.weight) {
+            capacity -= item.weight;
+            totalValue += item.value;
+            selectedItems.push_back({item.index, 1.0});
+        } else {
+            double frac = (double)capacity / item.weight;
+            totalValue += item.value * frac;
+            selectedItems.push_back({item.index, frac});
+            break;
+        }
+    }
+    return totalValue;
+}
+
 void solve01(const vector<Item>& items, int capacity) {
     vector<int> selectedItems;
     int maxValue = knapsack01(items, capacity, selectedItems);
@@ -71,6 +93,22 @@ void solve01(const vector<Item>& items, int capacity) {
         cout << setw(6) << idx
              << setw(8) << items[idx].value
              << setw(8) << items[idx].weight << "\n";
+    }
+}
+
+void solveFractional(const vector<Item>& items, int capacity) {
+    vector<FractionalItem> selectedItems;
+    double maxValue = knapsackFractional(items, capacity, selectedItems);
+    cout << fixed << setprecision(2);
+    cout << "\n Fractional Knapsack Result:\n";
+    cout << "Total value: " << maxValue << "\n";
+    cout << "Selected items (Index | Value | Weight | Fraction Taken):\n";
+    for (const auto& fi : selectedItems) {
+        int idx = fi.index;
+        cout << setw(6) << idx
+             << setw(8) << items[idx].value
+             << setw(8) << items[idx].weight
+             << setw(10) << fi.fraction << "\n";
     }
 }
 
