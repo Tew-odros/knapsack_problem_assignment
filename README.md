@@ -31,8 +31,8 @@ Used for fractional knapsack results:
 
   `getValidInt(prompt, minVal)`:
 
-    + Ensures valid integer input ≥ minVal
-    + Handles invalid input with error messages and retries
+   + Ensures valid integer input ≥ minVal
+   + Handles invalid input with error messages and retries
 
 ## Knapsack Algorithms
 
@@ -47,8 +47,8 @@ Used for fractional knapsack results:
 
 ## Solution Display Functions
 
-  + `solve01()`: Displays 0/1 knapsack results in formatted table
-  + `solveFractional()`: Displays fractional knapsack results with fractions
+ + `solve01()`: Displays 0/1 knapsack results in formatted table
+ + `solveFractional()`: Displays fractional knapsack results with fractions
 
 ## User Interface Flow
 
@@ -68,48 +68,51 @@ Used for fractional knapsack results:
           - Fractions taken (for fractional solution)
 
 # Usage Example
-
+```
 ------------------------------------------------------
-===== Knapsack Resource Allocation Tool =====
-Enter number of items: 3
-Item 1 - Name: Gold
-Item 1 - Value: 60
-Item 1 - Weight: 10
-Item 2 - Name: Silver
-Item 2 - Value: 100
-Item 2 - Weight: 20
-Item 3 - Name: Bronze
-Item 3 - Value: 120
-Item 3 - Weight: 30
-Enter maximum capacity of knapsack: 50
+===== Knapsack Resource Allocation Tool ===== 
+Enter number of items: 3 
+Item 1 - Name: Gold 
+Item 1 - Value: 60 
+Item 1 - Weight: 10 
+Item 2 - Name: Silver 
+Item 2 - Value: 100 
+Item 2 - Weight: 20 
+Item 3 - Name: Bronze 
+Item 3 - Value: 120 
+Item 3 - Weight: 30 
+Enter maximum capacity of knapsack: 50 
 
-Choose solving method:
-1. 0/1 Knapsack
-2. Fractional Knapsack
-Enter choice (1 or 2): 1
+Choose solving method: 
+1. 0/1 Knapsack 
+2. Fractional Knapsack 
+Enter choice (1 or 2): 1 
 
-0/1 Knapsack Result:
-Total value: 220
-Selected items (Index | Name | Value | Weight):
-     0      Gold      60      10
-     2    Bronze     120      30
+0/1 Knapsack Result: 
+Total value: 220 
+Selected items (Index | Name | Value | Weight): 
+     0      Gold      60      10 
+     2    Bronze     120      30 
 --------------------------------------------------------
+```
 
 ## Key Features
-    + Robust input validation
-    + Clear, formatted output
-    + Tracks original item indices and names
-    + Handles both discrete and fractional selection
-    + User-friendly menu system
-    + Memory-efficient DP implementation for 0/1 knapsack
+   + Robust input validation
+   + Clear, formatted output
+   + Tracks original item indices and names
+   + Handles both discrete and fractional selection
+   + User-friendly menu system
+   + Memory-efficient DP implementation for 0/1 knapsack
 
 ---------------------------------------------------------
-                      # Group Members
+# Group Members
+```
+Name                   GitHub username       Id no.
 
-## Name               ## GitHub username    Id no.
 1. Tewodros Besha      Tew-odros            NSR/921/15
 2. Desta Shewa         DestaShewa           NSR/T/016/15
 3. Kidus Petros        Kidus96              NSR/570/15
 4. Habtamu Abera       Juniour12            NSR/448/15
 5. Tesfayesus Arza     Tesfawyesus          NSR/915/15
-6. Yemisrach Tamrat    Yemi-2015            NSR/990/15  
+6. Yemisrach Tamrat    Yemi-2015            NSR/990/15
+```
