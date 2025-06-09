@@ -6,6 +6,7 @@
 using namespace std;
 
 struct Item {
+    string name;   // New field for item label
     int value;
     int weight;
     int index;
@@ -88,12 +89,14 @@ void solve01(const vector<Item>& items, int capacity) {
     int maxValue = knapsack01(items, capacity, selectedItems);
     cout << "\n 0/1 Knapsack Result:\n";
     cout << "Total value: " << maxValue << "\n";
-    cout << "Selected items (Index | Value | Weight):\n";
-    for (int idx : selectedItems) {
-        cout << setw(6) << idx
-             << setw(8) << items[idx].value
-             << setw(8) << items[idx].weight << "\n";
-    }
+    cout << "Selected items (Index | Name | Value | Weight):\n";
+for (int idx : selectedItems) {
+    cout << setw(6) << idx
+         << setw(10) << items[idx].name
+         << setw(8) << items[idx].value
+         << setw(8) << items[idx].weight << "\n";
+}
+
 }
 
 void solveFractional(const vector<Item>& items, int capacity) {
@@ -102,14 +105,16 @@ void solveFractional(const vector<Item>& items, int capacity) {
     cout << fixed << setprecision(2);
     cout << "\n Fractional Knapsack Result:\n";
     cout << "Total value: " << maxValue << "\n";
-    cout << "Selected items (Index | Value | Weight | Fraction Taken):\n";
-    for (const auto& fi : selectedItems) {
-        int idx = fi.index;
-        cout << setw(6) << idx
-             << setw(8) << items[idx].value
-             << setw(8) << items[idx].weight
-             << setw(10) << fi.fraction << "\n";
-    }
+    cout << "Selected items (Index | Name | Value | Weight | Fraction Taken):\n";
+for (const auto& fi : selectedItems) {
+    int idx = fi.index;
+    cout << setw(6) << idx
+         << setw(10) << items[idx].name
+         << setw(8) << items[idx].value
+         << setw(8) << items[idx].weight
+         << setw(10) << fi.fraction << "\n";
+}
+
 }
 
 int main () {
@@ -118,10 +123,13 @@ int main () {
 
     vector<Item> items(n);
     for (int i = 0; i < n; ++i) {
-        items[i].index = i;
-        items[i].value = getValidInt("Item " + to_string(i + 1) + " - Value: ", 0);
-        items[i].weight = getValidInt("Item " + to_string(i + 1) + " - Weight: ", 1);
-    }
+    items[i].index = i;
+    cout << "Item " << (i + 1) << " - Name: ";
+    cin >> ws;  // Clear whitespace
+    getline(cin, items[i].name);  // Read full name with spaces if any
+    items[i].value = getValidInt("Item " + to_string(i + 1) + " - Value: ", 0);
+    items[i].weight = getValidInt("Item " + to_string(i + 1) + " - Weight: ", 1);
+}
 
     int capacity = getValidInt("Enter maximum capacity of knapsack: ", 1);
 
