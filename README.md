@@ -42,10 +42,12 @@ Used for fractional knapsack results:
     + Uses dynamic programming with a 2D table
     + Returns maximum value and tracks selected items via indices
     + Time complexity: O(nW) where n=number of items, W=capacity
+    + Suitable for problems requiring exact inclusion or exclusion of items
 2. Fractional Knapsack (`knapsackFractional`):
     + Uses greedy approach based on value-to-weight ratio
     + Returns maximum value and tracks fractions taken
     + Time complexity: O(n log n) due to sorting
+    + Ideal for scenarios where partial selection of items is allowed
 
 ## Solution Display Functions
 
