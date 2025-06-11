@@ -3,9 +3,11 @@
 ## Overview
 
 This C++ program implements two classic knapsack problem-solving algorithms:
-  **0/1 Knapsack** - Uses dynamic programming to solve the discrete item selection problem
-  **Fractional Knapsack** - Uses a greedy algorithm to solve the continuous item selection problem
+0/1 Knapsack – Uses dynamic programming to solve the discrete item selection problem.
+Fractional Knapsack – Uses a greedy algorithm to solve the continuous item selection problem.
+
 The tool allows users to input items with names, values, and weights, then select which algorithm to apply to maximize the value within a given capacity constraint.
+It supports real-time comparison of both approaches for the same input, helping users understand their behavior and efficiency.
 
 ## Data Structures
 
