@@ -17,7 +17,7 @@ struct FractionalItem {
     double fraction;
 };
 
-// Validated integer input
+//  Here show input integer validation
 int getValidInt(const string& prompt, int minVal = 0) {
     int val;
     while (true) {
